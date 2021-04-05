@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+<!-- 
+    AJAX - API - Database 
+    CS230 Assignment 04
+    Browser: Microsoft edge 
+    OS: Windows
+    
+-->
+
+<head>
+    <title>AJAX - API - Database Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Use Bootstrap for the form styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Use W3.CSS for the Modal -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Extra Styles for the Bootstrap Forms */
+        
+        h1 {
+            font: 30px Verdana;
+            text-align: center;
+        }
+        
+        h2 {
+            font: 20px Verdana;
+            text-align: center;
+        }
+        
+        legend {
+            padding: 10px;
+            font: 30px Verdana
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AJAX - API - Database </h1>
+    <h2>CS230 Assignment 04 </h2>
+
+
+    <br />
+
+    <!-- 
+        Bootstrap Styled Form: Add User to Database 
+        Generated using the Bootsnipp Form Builder and Generator for Bootstrap
+        https://bootsnipp.com/forms
+    -->
+    <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form id="addUserForm" class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Add User to Database</legend>
+
+                        <!-- Text Input - Title -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="title">Title</label>
+                            <div class="col-md-4">
+                                <input id="title" name="title" placeholder="Title" class="form-control input-md">
+                                <span class="help-block">Please enter your title!</span>
+                            </div>
+                        </div>
+                        <!-- Text Input - First Name -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="firstname">First Name</label>
+                            <div class="col-md-4">
+                                <input id="firstname" name="firstname" placeholder="First Name" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter your first name!</span>
+                            </div>
+                        </div>
+
+                        <!-- Text Input - Surname -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="surname">Surname</label>
+                            <div class="col-md-4">
+                                <input id="surname" name="surname" type="text" placeholder="Surname" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter your Surname</span>
+                            </div>
+                        </div>
+                        <!--Text Input - Mobile  -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="moblie">Moblie</label>
+                            <div class="col-md-4">
+                                <input id="mobile" name="mobile" type="text" placeholder="Mobile" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter your Mobile</span>
+                            </div>
+                        </div>
+
+                        <!-- Text Input - Email -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="email">Email</label>
+                            <div class="col-md-4">
+                                <input id="email" name="email" type="text" placeholder="email" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter your Email</span>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="homeaddressline1">Home Address: Address Line 1</label>
+                            <div class="col-md-4">
+                                <input id="homeaddressline1" name="homeaddressline1" type="text" placeholder="Address Line 1" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter address line 1</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="homeaddressline2">Home Address: Address Line 2</label>
+                            <div class="col-md-4">
+                                <input id="homeaddressline2" name="homeaddressline2" type="text" placeholder="Address Line 2" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter address line 2</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="hometown">Home Address: Town</label>
+                            <div class="col-md-4">
+                                <input id="hometown" name="hometown" type="text" placeholder="Town" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter Town</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="homecounty">Home Address: County</label>
+                            <div class="col-md-4">
+                                <input id="homecounty" name="homecounty" type="text" placeholder="County" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter your County</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="homeeircode">Home Address: Eircode</label>
+                            <div class="col-md-4">
+                                <input id="homeeircode" name="homeeircode" type="text" placeholder="Eircode" class="form-control input-md">
+                                <span class="help-block">Please enter your Eircode</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="shippingaddressline1">Shipping Address: Address Line 1</label>
+                            <div class="col-md-4">
+                                <input id="shippingaddressline1" name="shippingaddressline1" type="text" placeholder="Shipping Address Line 1" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter shipping address line 1</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="shippingaddressline2">Shipping Address: Address Line 2</label>
+                            <div class="col-md-4">
+                                <input id="shippingaddressline2" name="shippingaddressline2" type="text" placeholder="Shipping Address Line 2" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter address line 2</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="shippingtown">Shipping Address: Town</label>
+                            <div class="col-md-4">
+                                <input id="shippingtown" name="shippingtown" type="text" placeholder="Town" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter Town</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="shippingcounty">Shipping Address: County</label>
+                            <div class="col-md-4">
+                                <input id="shippingcounty" name="shippingcounty" type="text" placeholder="County" class="form-control input-md" required="true">
+                                <span class="help-block">Please enter your County</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="shippingeircode">Shipping Address: Eircode</label>
+                            <div class="col-md-4">
+                                <input id="shippingeircode" name="shippingeircode" type="text" placeholder="Eircode" class="form-control input-md">
+                                <span class="help-block">Please enter your Eircode</span>
+                            </div>
+                        </div>
+
+
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <input type="submit" value="Send User Data" class="btn btn-primary">
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!-- 
+        Bootstrap Styled Form: Add User to Database 
+        Generated using the Bootsnipp Form Builder and Generator for Bootstrap
+        https://bootsnipp.com/forms
+    -->
+    <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form id="getUserDatabaseForm" class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Show User Database</legend>
+
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="showUserDatabase">User Database</label>
+                            <div class="col-md-4">
+                                <textarea class="form-control" id="showUserDatabase" name="showUserDatabase">Retrieved Database displayed here!</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <input type="submit" value="Get User Database" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORM TO UPDATA USER DATA IN DATABASE -->
+    <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form id="updateUserForm" class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Update Users</legend>
+
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="userKey">Enter User Unique Key</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="userKey" name="userKey" required="true"></input>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="userNewMobile">Enter New Mobile Number</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="userNewMobile" name="userNewMobile" required="true"></input>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="userNewEmail">Enter New Email</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="userNewEmail" name="userNewEmail" required="true"></input>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="userNewTitle">Enter New Title</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="userNewTitle" name="userNewTitle" required="true"></input>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <input type="submit" value="Update Database" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORM TO DELETE USER FROM DATABASE -->
+    <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form id="DeleteDatabaseForm" class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Delete User from Database</legend>
+
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="oldEmail">Enter email of user you want to delete</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="oldEmail" name="oldEmail" required="true"></input>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="oldMobile">Enter mobile of user you want to delete</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="oldMobile" name="oldMobile" required="true"></input>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="oldFirstname">Enter first name of user you want to delete</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="oldFirstname" name="oldFirstname" required="true"></input>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="oldSurname">Enter surname of user you want to delete</label>
+                            <div class="col-md-4">
+                                <input class="form-control" id="oldSurname" name="oldSurname" required="true"></input>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <input type="submit" value="Delete User from Database" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        jQuery Scripts used to implement form processing and Ajax functionality
+        https://www.w3schools.com/w3css/w3css_modal.asp
+    -->
+    <script>
+        $(document).ready(function() {
+            // handle "Delete User in Database" submit button click
+            $('#DeleteDatabaseForm').submit(function(e) {
+                var userInfo = {
+                    oldEmail: $('input[name=oldEmail]').val(),
+                    oldMobile: $('input[name=oldMobile]').val(),
+                    oldFirstname: $('input[name=oldFirstname]').val(),
+                    oldSurname: $('input[name=oldSurname]').val()
+                };
+                $.ajax({
+                        type: 'DELETE',
+                        url: 'http://localhost:8000/api/user',
+                        data: userInfo
+                    })
+                    .done(function(data) {
+                        $('input[name=oldEmail]').val('');
+                        $('input[name=oldMobile]').val('');
+                        $('input[name=oldFirstname]').val('');
+                        $('input[name=oldSurname]').val('');
+                        showUserModal(data);
+                    });
+                e.preventDefault();
+            });
+
+            $('#updateUserForm').submit(function(e) {
+                var newData = {
+                    userKey: $('input[name=userKey]').val(),
+                    userNewMobile: $('input[name=userNewMobile]').val(),
+                    userNewEmail: $('input[name=userNewEmail]').val(),
+                    userNewTitle: $('input[name=userNewTitle]').val()
+                };
+                $.ajax({
+                        type: 'PUT',
+                        url: 'http://localhost:8000/api/user',
+                        data: newData
+                    })
+                    .done(function(data) {
+                        $('input[name=userKey]').val('');
+                        $('input[name=userNewMobile]').val('');
+                        $('input[name=userNewEmail]').val('');
+                        $('input[name=userNewTitle]').val('');
+                        showUserModal(data);
+                    });
+                e.preventDefault();
+
+            });
+            // handle "Add User to Database" submit button click
+            $('#addUserForm').submit(function(e) {
+                var user = {
+                    title: $('input[name=title]').val(),
+                    firstname: $('input[name=firstname]').val(),
+                    surname: $('input[name=surname]').val(),
+                    mobile: $('input[name=mobile]').val(),
+                    email: $('input[name=email]').val(),
+                    homeaddressline1: $('input[name=homeaddressline1]').val(),
+                    homeaddressline2: $('input[name=homeaddressline2]').val(),
+                    homeaddress_Town: $('input[name=hometown]').val(),
+                    homecounty: $('input[name=homecounty]').val(),
+                    homeeircode: $('input[name=homeeircode]').val(),
+                    shippingaddressline1: $('input[name=shippingaddressline1]').val(),
+                    shippingaddressline2: $('input[name=shippingaddressline2]').val(),
+                    shippingtown: $('input[name=shippingtown]').val(),
+                    shippingcounty: $('input[name=shippingcounty]').val(),
+                    shippingeircode: $('input[name=shippingeircode]').val(),
+                };
+                $.ajax({
+                        type: 'POST',
+                        url: 'http://localhost:8000/api/user',
+                        data: user
+                    })
+                    .done(function(data) {
+                        // reset the form for next time!
+                        $('input[name=title]').val('');
+                        $('input[name=firstname]').val('');
+                        $('input[name=surname]').val('');
+                        $('input[name=mobile]').val('');
+                        $('input[name=email]').val('');
+                        $('input[name=homeaddressline1]').val('');
+                        $('input[name=homeaddressline2]').val('');
+                        $('input[name=hometown]').val('');
+                        $('input[name=homecounty]').val('');
+                        $('input[name=homeeircode]').val('');
+                        $('input[name=shippingaddressline1]').val('');
+                        $('input[name=shippingaddressline2]').val('');
+                        $('input[name=shippingtown]').val('');
+                        $('input[name=shippingcounty]').val('');
+                        $('input[name=shippingeircode]').val('');
+                        //show confirmation message from API
+                        showUserModal(data);
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                // meand that clicked submit button will not take the browser to a new URL.
+            });
+
+            // handle "Get User Database" submit button click
+            $('#getUserDatabaseForm').submit(function(e) {
+                $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:8000/api/user'
+                    })
+                    .done(function(data) {
+                        // display the database in the textarea and trigger an input change event
+                        $('#showUserDatabase').val(JSON.stringify(data, null, 2)).trigger('input');
+                    });
+                e.preventDefault(); // when method is called, the default action of the event will not be triggered.
+                // meand that clicked submit button will not take the browser to a new URL.
+            });
+
+
+            // some fun jQuery here that is not necessary for operation
+            // this sets an event handler to resize the textarea after 
+            // a change event is triggered the call is triggered earlier
+            // after the content received from the API is written to the
+            // textarea it resizes to the size of the contained text
+            // just a vanity addition really!
+            $("#showUserDatabase").on("input", function() {
+                this.style.height = (this.scrollHeight) + "px;overflow-y:hidden;";
+                this.style.height = "auto";
+                this.style.height = (this.scrollHeight) + "px";
+            });
+
+
+
+        });
+
+        // Show the "User Added" Modal - this is a basic demo - change it!
+        function showUserModal(data) {
+            document.getElementById('modalUserAddedMessage').innerHTML = data;
+            document.getElementById('modalUserAdded').style.display = 'block';
+        }
+    </script>
+
+</body>
+
+</html>
